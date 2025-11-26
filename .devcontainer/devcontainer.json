@@ -4,14 +4,16 @@
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {},
+		"ghcr.io/devcontainers-extra/features/zsh-plugins:0": {},
 		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2.1.1": {},
 		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
 		"ghcr.io/devcontainers/features/docker-in-docker": {},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube": {},
 		"ghcr.io/rio/features/k9s": {}
 	},
-	"forwardPorts": [8080],
+	"forwardPorts": [8080, 8090,9000],
+	"postStartCommand": "bash -c 'minikube start --wait=all && sleep 5'",
+	"postAttachCommand": "nohup kubectl port-forward service/myapp 8080:9000 8090:9000 --address 0.0.0.0 > /tmp/port-forward.log 2>&1 &",
 	"customizations": {
 		"vscode": {
 			"extensions": [
