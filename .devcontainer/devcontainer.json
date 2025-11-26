@@ -11,9 +11,8 @@
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube": {},
 		"ghcr.io/rio/features/k9s": {}
 	},
-	"forwardPorts": [8080, 8090],
-	"postStartCommand": "bash -c 'minikube start --wait=all'",
-	"postCreateCommand": "./.devcontainer/scripts/start-dev.sh",
+	"forwardPorts": [9000],
+	"postStartCommand": "bash -c 'minikube start --wait=all && git config --global user.name \"Peter Sime\" && git config --global user.email \"138059854+psime@users.noreply.github.com\" && ./.devcontainer/scripts/start-dev.sh'",
 	"customizations": {
 		"vscode": {
 			"extensions": [
