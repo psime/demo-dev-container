@@ -11,9 +11,9 @@
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube": {},
 		"ghcr.io/rio/features/k9s": {}
 	},
-	"forwardPorts": [8080, 8090,9000],
-	"postStartCommand": "bash -c 'minikube start --wait=all && sleep 5'",
-	"postAttachCommand": "nohup kubectl port-forward service/myapp 8080:9000 8090:9000 --address 0.0.0.0 > /tmp/port-forward.log 2>&1 &",
+	"forwardPorts": [8080, 8090],
+	"postStartCommand": "bash -c 'minikube start --wait=all'",
+	"postCreateCommand": "./.devcontainer/scripts/start-dev.sh",
 	"customizations": {
 		"vscode": {
 			"extensions": [
